@@ -18,7 +18,10 @@ export class LibroComponent implements OnInit {
   }
   
   private loadLibro(): void {
-this.libroService.getLibros();
+this.libroService.getLibros().subscribe(res=>{
+  this.libros = res;
+
+});
    
   }
 }
