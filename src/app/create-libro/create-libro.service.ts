@@ -19,7 +19,9 @@ export class CreateLibroService {
   public validate(libro: LibroModel): boolean {
     let isValid= true;
 
-    
+    if (!libro.nombrelibro){
+      isValid = false;
+    }
     if (!libro.costolibro){
       isValid = false;
     }

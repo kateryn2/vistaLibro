@@ -13,4 +13,8 @@ export class LibroService {
     
    return this.http.get<LibroModel[]>("http://localhost:8080/getLibro");
   }
+  public DeleteLibro(libro: LibroModel):void{
+   this.http.post("http://localhost:8080/DeleteLibro",JSON.stringify( libro)).subscribe();
+  }
+
 }

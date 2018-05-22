@@ -7,6 +7,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Descripción</th>
       <th scope="col">Valor</th>
+      <th scope="col">Acción</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,11 @@
       <td>{{item.nombrelibro}}</td>
       <td>{{item.descripcionlibro}}</td>
       <td>{{item.costolibro}}</td>
+      <td>
+        <img src="../../assets/edit.png" class="iconoEditar"(click)="edit(item)">
+        <img src="../../assets/delete.png" class="iconoEditar"(click)="delete(item)" onclick="return confirm('¿Seguro que quieres eliminar este registro?')">
+      </td>
+      
     </tr>
   
 </table>

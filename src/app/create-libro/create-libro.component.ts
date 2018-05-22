@@ -17,9 +17,17 @@ export class CreateLibroComponent implements OnInit {
   private libro: LibroModel;
   private isValid: boolean = true;
   private message: string = "";
+
   constructor(private createLibroService: CreateLibroService,
   private router: Router) { 
-    this.libro = new LibroModel();
+//invoca la información
+    if(sessionStorage.getItem("libro")){
+      this.libro= JSON.parse(sessionStorage.getItem("libro"));
+
+    }else{
+      this.libro= new LibroModel();
+    }
+ 
   }
 
   ngOnInit() {
@@ -41,6 +49,7 @@ if(res.respuestaCode == OK){
     }else{
       this.message= "Los campos con * son obligatorios";
     }
+    sessionStorage.clear();
    }
 
 

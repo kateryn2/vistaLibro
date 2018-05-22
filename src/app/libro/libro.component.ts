@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { LibroModel } from './../model/libro.model';
 
 import { LibroService } from './libro.service';
@@ -11,7 +12,7 @@ import { LibroService } from './libro.service';
 })
 export class LibroComponent implements OnInit {
   private libros: Array<LibroModel>;
-  constructor(private libroService: LibroService) { }
+  constructor(private libroService: LibroService, private router: Router ) { }
 
   ngOnInit() {
     this.loadLibro();
@@ -23,5 +24,14 @@ this.libroService.getLibros().subscribe(res=>{
 
 });
    
+  }
+
+  public edit(libro: LibroModel):void{
+    sessionStorage.setItem('libro', JSON.stringify(libro));
+    this.router.navigate(['/createLibroComponent']);
+  }
+
+  public delete(libro: LibroModel):void{
+    this.libroService.DeleteLibro(libro);
   }
 }
